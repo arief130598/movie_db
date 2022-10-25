@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit
 
 const val BASE_URL: String = "dsadsa"
 
-val appModule = module {
+val networkModule = module {
     single { provideOkHttpClient() }
     single { provideRetrofit(get()) }
     single { provideApiService(get()) }

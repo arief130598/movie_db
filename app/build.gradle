@@ -31,6 +31,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        dataBinding true
+    }
 }
 
 dependencies {
@@ -49,6 +52,7 @@ dependencies {
 
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     kapt 'androidx.room:room-compiler:2.4.3'
     implementation "androidx.room:room-ktx:2.4.3"

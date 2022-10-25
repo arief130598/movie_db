@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dimensi DP -->
+    <dimen name="dim2">2dp</dimen>
+    <dimen name="dim4">4dp</dimen>
+    <dimen name="dim8">8dp</dimen>
+    <dimen name="dim10">10dp</dimen>
+    <dimen name="dim12">12dp</dimen>
+    <dimen name="dim14">14dp</dimen>
+    <dimen name="dim16">16dp</dimen>
+    <dimen name="dim18">18dp</dimen>
+    <dimen name="dim20">20dp</dimen>
+    <dimen name="dim22">22dp</dimen>
+    <dimen name="dim24">24dp</dimen>
+    <dimen name="dim28">28dp</dimen>
+    <dimen name="dim30">30dp</dimen>
+    <dimen name="dim32">32dp</dimen>
+    <dimen name="dim36">36dp</dimen>
+    <dimen name="dim40">40dp</dimen>
+    <dimen name="dim50">50dp</dimen>
+    <dimen name="dim70">70dp</dimen>
+    <dimen name="dim75">75dp</dimen>
+    <dimen name="dim80">80dp</dimen>
+    <dimen name="dim85">85dp</dimen>
+    <dimen name="dim90">90dp</dimen>
+    <dimen name="dim95">95dp</dimen>
+    <dimen name="dim100">100dp</dimen>
+    <dimen name="dim110">110dp</dimen>
+    <dimen name="dim120">120dp</dimen>
+    <dimen name="dim128">128dp</dimen>
+    <dimen name="dim140">140dp</dimen>
+    <dimen name="dim148">148dp</dimen>
+    <dimen name="dim160">160dp</dimen>
+    <dimen name="dim180">180dp</dimen>
+    <dimen name="dim200">200dp</dimen>
+    <dimen name="dim240">240dp</dimen>
+    <dimen name="dim320">320dp</dimen>
+
+    <!-- Dimensi SP For Text -->
+    <dimen name="text8">8sp</dimen>
+    <dimen name="text10">10sp</dimen>
+    <dimen name="text12">12sp</dimen>
+    <dimen name="text14">14sp</dimen>
+    <dimen name="text16">16sp</dimen>
+    <dimen name="text18">18sp</dimen>
+    <dimen name="text20">20sp</dimen>
+    <dimen name="text24">24sp</dimen>
+    <dimen name="text28">28sp</dimen>
+    <dimen name="text32">32sp</dimen>
+    <dimen name="text36">36sp</dimen>
+</resources>
