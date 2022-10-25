@@ -4,15 +4,22 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.arief.moviedb.db.dao.GenresTable
+import com.arief.moviedb.db.dao.MoviesTable
+import com.arief.moviedb.model.Movies
 
 @Database(
     entities = [ // Add class to add new DB,
-
+        Movies::class
     ],
     version = 10000, // Change db version with apps version
     exportSchema = false)
 
 abstract class MovieDatabase : RoomDatabase() {
+
+    abstract val moviesTable: MoviesTable
+    abstract val genresTable: GenresTable
+
     companion object {
         @Volatile
         private var INSTANCE: MovieDatabase? = null

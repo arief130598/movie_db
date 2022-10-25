@@ -12,7 +12,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
-const val BASE_URL: String = "dsadsa"
+const val BASE_URL: String = "https://api.themoviedb.org/3/"
 
 val networkModule = module {
     single { provideOkHttpClient() }
