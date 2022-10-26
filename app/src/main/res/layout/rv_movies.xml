@@ -37,16 +37,16 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/quotes"
+                        android:id="@+id/poster"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
                         android:adjustViewBounds="true"
+                        android:src="@drawable/no_image"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:src="@drawable/poster" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -81,6 +81,7 @@
                     android:id="@+id/rating"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dim4"
                     android:fontFamily="@font/roboto"
                     android:textAlignment="textStart"
                     android:textColor="@color/gray"
@@ -88,8 +89,6 @@
                     android:textStyle="bold"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/star"
-                    tools:layout_editor_absoluteX="218dp"
-                    tools:layout_editor_absoluteY="16dp"
                     tools:text="4.7" />
 
                 <ImageView
@@ -105,6 +104,7 @@
                     android:id="@+id/overview"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dim4"
                     android:fontFamily="@font/roboto"
                     android:textAlignment="textStart"
                     android:textColor="@color/gray"
@@ -120,6 +120,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/dim8"
+                    android:layout_marginTop="@dimen/dim4"
                     android:fontFamily="@font/roboto"
                     android:textAlignment="textStart"
                     android:textColor="@color/gray"

@@ -4,15 +4,18 @@
     <item
         android:id="@+id/popularFragment"
         android:title="@string/popular"
+        android:icon="@drawable/ic_fire"
         />
 
     <item
         android:id="@+id/nowPlayingFragment"
         android:title="@string/now_playing"
+        android:icon="@drawable/ic_now_playing"
         />
 
     <item
         android:id="@+id/upcomingFragment"
         android:title="@string/upcoming"
+        android:icon="@drawable/ic_upcoming"
         />
 </menu>

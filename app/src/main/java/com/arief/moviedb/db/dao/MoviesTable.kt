@@ -1,10 +1,12 @@
 package com.arief.moviedb.db.dao
 
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.arief.moviedb.model.Movies
 
+@Dao
 interface MoviesTable {
     @Query("SELECT * FROM movies")
     fun getList(): List<Movies>
