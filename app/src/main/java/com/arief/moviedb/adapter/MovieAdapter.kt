@@ -1,16 +1,16 @@
 package com.arief.moviedb.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.arief.moviedb.R
 import com.arief.moviedb.databinding.RvMoviesBinding
 import com.arief.moviedb.model.Genres
 import com.arief.moviedb.model.Movies
+import com.arief.moviedb.ui.nowplaying.NowPlayingFragment
 import com.arief.moviedb.ui.popular.PopularFragment
+import com.arief.moviedb.ui.upcoming.UpcomingFragment
 import com.bumptech.glide.Glide
 
 class MovieAdapter(private var items: List<Movies>, private val fragment: Fragment) :
@@ -69,19 +69,36 @@ class MovieAdapter(private var items: List<Movies>, private val fragment: Fragme
 
     fun setFavorite(data : List<Movies>){
         this.favorite = data as MutableList<Movies>
+        notifyDataSetChanged()
     }
 
     fun addFavorite(data: Movies){
         this.favorite.add(data)
-        if(fragment is PopularFragment){
-            fragment.insertFavorite(data)
+        when (fragment) {
+            is PopularFragment -> {
+                fragment.insertFavorite(data)
+            }
+            is NowPlayingFragment -> {
+                fragment.insertFavorite(data)
+            }
+            is UpcomingFragment -> {
+                fragment.insertFavorite(data)
+            }
         }
     }
 
-    fun deleteFavorite(data: Movies){
+    fun deleteFavorite(data: Movies) {
         this.favorite.remove(data)
-        if(fragment is PopularFragment){
-            fragment.deleteFavorite(data)
+        when (fragment) {
+            is PopularFragment -> {
+                fragment.deleteFavorite(data)
+            }
+            is NowPlayingFragment -> {
+                fragment.deleteFavorite(data)
+            }
+            is UpcomingFragment -> {
+                fragment.deleteFavorite(data)
+            }
         }
     }
 

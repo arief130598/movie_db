@@ -40,10 +40,14 @@ class PopularViewModel(private val moviesRepo: MoviesRepo,
         getGenres()
     }
 
-    private fun getGenres(){
+    fun getFavorite(){
         ioScope.launch {
             _favorite.postValue(moviesRepo.getList())
+        }
+    }
 
+    private fun getGenres(){
+        ioScope.launch {
             apiMovieDBRepo.getGenres(BuildConfig.API_KEY).let {
                 if (it.isSuccessful && it.body() != null) {
                     if(it.body()!!.genres.isNotEmpty()){

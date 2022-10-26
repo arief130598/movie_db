@@ -1,15 +1,12 @@
 package com.arief.moviedb.ui.popular
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.arief.moviedb.R
@@ -17,7 +14,6 @@ import com.arief.moviedb.adapter.MovieAdapter
 import com.arief.moviedb.databinding.FragmentPopularBinding
 import com.arief.moviedb.model.Movies
 import com.arief.moviedb.utils.Status
-import kotlinx.coroutines.delay
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PopularFragment : Fragment() {
@@ -46,6 +42,7 @@ class PopularFragment : Fragment() {
         adapter = MovieAdapter(listOf(), this@PopularFragment)
         binding.rvData.adapter = adapter
         binding.rvData.layoutManager = LinearLayoutManager(requireContext())
+        viewModel.getFavorite()
         if(viewModel.genres.value != null) {
             adapter.setGenre(viewModel.genres.value!!)
         }

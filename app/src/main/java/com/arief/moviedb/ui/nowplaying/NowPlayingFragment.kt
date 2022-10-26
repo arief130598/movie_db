@@ -1,32 +1,134 @@
 package com.arief.moviedb.ui.nowplaying
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.arief.moviedb.R
+import com.arief.moviedb.adapter.MovieAdapter
+import com.arief.moviedb.databinding.FragmentNowPlayingBinding
+import com.arief.moviedb.model.Movies
+import com.arief.moviedb.utils.Status
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NowPlayingFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = NowPlayingFragment()
-    }
-
-    private lateinit var viewModel: NowPlayingViewModel
+    private lateinit var binding: FragmentNowPlayingBinding
+    private val viewModel : NowPlayingViewModel by viewModel()
+    private lateinit var adapter: MovieAdapter
+    private var loadingMore = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_now_playing, container, false)
+    ): View {
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_now_playing,
+            container,
+            false
+        )
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(NowPlayingViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        adapter = MovieAdapter(listOf(), this@NowPlayingFragment)
+        binding.rvData.adapter = adapter
+        binding.rvData.layoutManager = LinearLayoutManager(requireContext())
+        viewModel.getFavorite()
+        if(viewModel.genres.value != null) {
+            adapter.setGenre(viewModel.genres.value!!)
+        }
+        if(viewModel.listLoadedMovies.isNotEmpty()) {
+            adapter.addData(viewModel.listLoadedMovies)
+            binding.rvData.scrollToPosition(viewModel.lastPositionAdapter)
+            binding.mainShimmer.apply {
+                stopShimmer()
+                visibility = View.GONE
+            }
+            binding.rvData.visibility = View.VISIBLE
+        }
+        binding.rvData.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                val layoutManager = binding.rvData.layoutManager as LinearLayoutManager
+                if (layoutManager.findLastCompletelyVisibleItemPosition() == adapter.itemCount - 1){
+                    if (!loadingMore) {
+                        binding.progressBar.visibility = View.VISIBLE
+                        viewModel.getMovies()
+                    }
+                }
+            }
+
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+
+                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+                viewModel.setLastPosition(layoutManager.findFirstVisibleItemPosition())
+            }
+        })
+
+        observer()
+    }
+
+    private fun observer(){
+        viewModel.favorite.observe(viewLifecycleOwner){
+            adapter.setFavorite(it)
+        }
+
+        viewModel.genres.observe(viewLifecycleOwner){
+            adapter.setGenre(it)
+        }
+
+        viewModel.movies.observe(viewLifecycleOwner) {
+            when (it.status) {
+                Status.SUCCESS -> {
+                    if(adapter.itemCount == 0) {
+                        binding.mainShimmer.apply {
+                            stopShimmer()
+                            visibility = View.GONE
+                            binding.rvData.visibility = View.VISIBLE
+                            adapter.addData(it.data!!)
+                        }
+                    }else{
+                        binding.progressBar.visibility = View.GONE
+                        adapter.addData(it.data!!)
+                        binding.rvData.scrollToPosition(viewModel.lastPositionAdapter)
+                    }
+                }
+                Status.LOADING -> {
+                    if(adapter.itemCount == 0) {
+                        binding.mainShimmer.apply {
+                            startShimmer()
+                            visibility = View.VISIBLE
+                        }
+                    }
+                }
+                Status.ERROR -> {
+                    binding.mainShimmer.apply {
+                        stopShimmer()
+                        visibility = View.GONE
+                    }
+                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
+    fun insertFavorite(item: Movies){
+        viewModel.insertFavorite(item)
+    }
+
+    fun deleteFavorite(item: Movies){
+        viewModel.deleteFavorite(item)
     }
 
 }
