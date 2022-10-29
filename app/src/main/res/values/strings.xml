@@ -5,4 +5,13 @@
     <string name="popular">Popular</string>
     <string name="now_playing">Now Playing</string>
     <string name="upcoming">Upcoming</string>
+    <string name="search">Search</string>
+    <string name="release">Release :</string>
+    <string name="release_date">Release Date :</string>
+    <string name="popularity">Popularity :</string>
+    <string name="rating">Rating :</string>
+    <string name="rating_total">Rating Total :</string>
+    <string name="language">Language :</string>
+    <string name="back">Back</string>
+    <string name="poster">Poster</string>
 </resources>

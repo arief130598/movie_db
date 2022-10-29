@@ -1,13 +1,323 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.detail.DetailFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
+    <data>
+
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:context=".ui.detail.DetailFragment">
+
+            <ImageView
+                android:id="@+id/background_poster"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dim240"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                android:src="@drawable/no_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-48dp"
+                style="@style/DetailCardViewStyle"
+                android:elevation="0dp"
+                app:layout_constraintTop_toBottomOf="@+id/background_poster">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dim16"
+                    android:layout_marginEnd="@dimen/dim16">
+
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dim8"
+                        android:fontFamily="@font/cabin_medium"
+                        android:textAlignment="center"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/text24"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Black Adam" />
+
+                    <LinearLayout
+                        android:id="@+id/header"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dim16"
+                        android:weightSum="1"
+                        app:layout_constraintTop_toBottomOf="@id/title"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardPoster"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.25"
+                            app:cardCornerRadius="@dimen/dim8"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/poster"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/no_image"/>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.75"
+                            android:paddingBottom="@dimen/dim8"
+                            android:paddingStart="@dimen/dim20"
+                            android:paddingEnd="@dimen/dim8">
+
+                            <TextView
+                                android:id="@+id/tvRelease"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/dim8"
+                                android:fontFamily="@font/roboto"
+                                android:textAlignment="textStart"
+                                android:textColor="@color/gray"
+                                android:textSize="@dimen/text14"
+                                android:textStyle="bold"
+                                android:text="@string/release_date"
+                                app:layout_constraintVertical_bias="0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"/>
+
+                            <TextView
+                                android:id="@+id/release"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dim8"
+                                android:layout_marginEnd="@dimen/dim8"
+                                android:fontFamily="@font/roboto"
+                                android:textAlignment="textStart"
+                                android:textColor="@color/gray"
+                                android:textSize="@dimen/text14"
+                                app:layout_constraintStart_toEndOf="@+id/tvRelease"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toBottomOf="@+id/tvRelease"
+                                app:layout_constraintTop_toTopOf="@+id/tvRelease"
+                                tools:text="19 Mei 2020" />
+
+                            <TextView
+                                android:id="@+id/tvPopularity"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/dim8"
+                                android:layout_marginTop="@dimen/dim4"
+                                android:fontFamily="@font/roboto"
+                                android:textAlignment="textStart"
+                                android:textColor="@color/gray"
+                                android:textSize="@dimen/text14"
+                                android:textStyle="bold"
+                                android:text="@string/popularity"
+                                app:layout_constraintVertical_bias="0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvRelease"
+                                app:layout_constraintBottom_toBottomOf="parent"/>
+
+                            <TextView
+                                android:id="@+id/popularity"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dim8"
+                                android:layout_marginEnd="@dimen/dim8"
+                                android:fontFamily="@font/roboto"
+                                android:textAlignment="textStart"
+                                android:textColor="@color/gray"
+                                android:textSize="@dimen/text14"
+                                app:layout_constraintStart_toEndOf="@+id/tvPopularity"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toBottomOf="@+id/tvPopularity"
+                                app:layout_constraintTop_toTopOf="@+id/tvPopularity"
+                                tools:text="72000" />
+
+                            <TextView
+                                android:id="@+id/tvRating"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/dim8"
+                                android:layout_marginTop="@dimen/dim4"
+                                android:fontFamily="@font/roboto"
+                                android:textAlignment="textStart"
+                                android:textColor="@color/gray"
+                                android:textSize="@dimen/text14"
+                                android:textStyle="bold"
+                                android:text="@string/rating"
+                                app:layout_constraintVertical_bias="0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvPopularity"
+                                app:layout_constraintBottom_toBottomOf="parent"/>
+
+                            <TextView
+                                android:id="@+id/rating"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dim8"
+                                android:layout_marginEnd="@dimen/dim8"
+                                android:fontFamily="@font/roboto"
+                                android:textAlignment="textStart"
+                                android:textColor="@color/gray"
+                                android:textSize="@dimen/text14"
+                                app:layout_constraintStart_toEndOf="@+id/tvRating"
+                                app:layout_constraintBottom_toBottomOf="@+id/tvRating"
+                                app:layout_constraintTop_toTopOf="@+id/tvRating"
+                                tools:text="7.2" />
+
+                            <ImageView
+                                android:id="@+id/star"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star"
+                                android:layout_marginStart="@dimen/dim4"
+                                app:layout_constraintHorizontal_bias="0"
+                                app:layout_constraintStart_toEndOf="@id/rating"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toBottomOf="@+id/rating"
+                                app:layout_constraintTop_toTopOf="@+id/rating" />
+
+                            <TextView
+                                android:id="@+id/tvRatingTotal"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/dim8"
+                                android:layout_marginTop="@dimen/dim4"
+                                android:fontFamily="@font/roboto"
+                                android:textAlignment="textStart"
+                                android:textColor="@color/gray"
+                                android:textSize="@dimen/text14"
+                                android:textStyle="bold"
+                                android:text="@string/rating_total"
+                                app:layout_constraintVertical_bias="0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvRating"
+                                app:layout_constraintBottom_toBottomOf="parent"/>
+
+                            <TextView
+                                android:id="@+id/rating_total"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dim8"
+                                android:layout_marginEnd="@dimen/dim8"
+                                android:fontFamily="@font/roboto"
+                                android:textAlignment="textStart"
+                                android:textColor="@color/gray"
+                                android:textSize="@dimen/text14"
+                                app:layout_constraintStart_toEndOf="@+id/tvRatingTotal"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toBottomOf="@+id/tvRatingTotal"
+                                app:layout_constraintTop_toTopOf="@+id/tvRatingTotal"
+                                tools:text="4000" />
+
+
+                            <TextView
+                                android:id="@+id/tvLanguage"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/dim8"
+                                android:layout_marginTop="@dimen/dim4"
+                                android:fontFamily="@font/roboto"
+                                android:textAlignment="textStart"
+                                android:textColor="@color/gray"
+                                android:textSize="@dimen/text14"
+                                android:textStyle="bold"
+                                android:text="@string/language"
+                                app:layout_constraintVertical_bias="0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvRatingTotal"
+                                app:layout_constraintBottom_toBottomOf="parent"/>
+
+                            <TextView
+                                android:id="@+id/language"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dim8"
+                                android:layout_marginEnd="@dimen/dim8"
+                                android:fontFamily="@font/roboto"
+                                android:textAlignment="textStart"
+                                android:textColor="@color/gray"
+                                android:textSize="@dimen/text14"
+                                app:layout_constraintStart_toEndOf="@+id/tvLanguage"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toBottomOf="@+id/tvLanguage"
+                                app:layout_constraintTop_toTopOf="@+id/tvLanguage"
+                                tools:text="4000" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/overview"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dim16"
+                        android:fontFamily="@font/roboto"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/text14"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/header"
+                        tools:text="Black Adam sad sa dsaf dsadsa dsa dsa dsa das dsa dsa das dasdsad dsad asd sad sadsad" />
+
+                    <TextView
+                        android:id="@+id/genres"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dim8"
+                        android:layout_marginTop="@dimen/dim4"
+                        android:fontFamily="@font/roboto"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/text14"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/favorite"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/overview"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        tools:text="Genres : Action, Horror, Scifi" />
+
+                    <ImageView
+                        android:id="@+id/favorite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dim8"
+                        android:src="@drawable/ic_favorite_border_32"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@+id/genres"
+                        app:layout_constraintTop_toTopOf="@+id/genres" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

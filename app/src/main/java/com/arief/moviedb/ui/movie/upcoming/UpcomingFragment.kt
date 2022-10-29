@@ -1,25 +1,28 @@
-package com.arief.moviedb.ui.nowplaying
+package com.arief.moviedb.ui.movie.upcoming
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.arief.moviedb.R
 import com.arief.moviedb.adapter.MovieAdapter
-import com.arief.moviedb.databinding.FragmentNowPlayingBinding
+import com.arief.moviedb.databinding.FragmentUpcomingBinding
 import com.arief.moviedb.model.Movies
+import com.arief.moviedb.ui.movie.MovieViewModel
 import com.arief.moviedb.utils.Status
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class NowPlayingFragment : Fragment() {
+class UpcomingFragment : Fragment() {
 
-    private lateinit var binding: FragmentNowPlayingBinding
-    private val viewModel : NowPlayingViewModel by viewModel()
+    private lateinit var binding: FragmentUpcomingBinding
+    private val viewModel : UpcomingViewModel by viewModel()
+    private val viewModelMovie : MovieViewModel by activityViewModel()
     private lateinit var adapter: MovieAdapter
     private var loadingMore = false
 
@@ -29,7 +32,7 @@ class NowPlayingFragment : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_now_playing,
+            R.layout.fragment_upcoming,
             container,
             false
         )
@@ -39,13 +42,9 @@ class NowPlayingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = MovieAdapter(listOf(), this@NowPlayingFragment)
+        adapter = MovieAdapter(listOf(), this@UpcomingFragment)
         binding.rvData.adapter = adapter
         binding.rvData.layoutManager = LinearLayoutManager(requireContext())
-        viewModel.getFavorite()
-        if(viewModel.genres.value != null) {
-            adapter.setGenre(viewModel.genres.value!!)
-        }
         if(viewModel.listLoadedMovies.isNotEmpty()) {
             adapter.addData(viewModel.listLoadedMovies)
             binding.rvData.scrollToPosition(viewModel.lastPositionAdapter)
@@ -80,11 +79,11 @@ class NowPlayingFragment : Fragment() {
     }
 
     private fun observer(){
-        viewModel.favorite.observe(viewLifecycleOwner){
+        viewModelMovie.favorite.observe(viewLifecycleOwner){
             adapter.setFavorite(it)
         }
 
-        viewModel.genres.observe(viewLifecycleOwner){
+        viewModelMovie.genres.observe(viewLifecycleOwner){
             adapter.setGenre(it)
         }
 
@@ -124,11 +123,11 @@ class NowPlayingFragment : Fragment() {
     }
 
     fun insertFavorite(item: Movies){
-        viewModel.insertFavorite(item)
+        viewModelMovie.insertFavorite(item)
     }
 
     fun deleteFavorite(item: Movies){
-        viewModel.deleteFavorite(item)
+        viewModelMovie.deleteFavorite(item)
     }
 
 }

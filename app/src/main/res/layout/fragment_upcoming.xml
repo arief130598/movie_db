@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dim16"
-            android:layout_marginBottom="@dimen/dim16"
+            android:layout_marginBottom="@dimen/dim50"
             android:indeterminate="true"
             app:indicatorInset="@dimen/dim4"
             app:trackColor="@color/teal_200"

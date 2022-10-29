@@ -1,8 +1,6 @@
 package com.arief.moviedb.api
 
-import com.arief.moviedb.model.Genres
 import com.arief.moviedb.model.GenresParams
-import com.arief.moviedb.model.Movies
 import com.arief.moviedb.model.MoviesParams
 import retrofit2.Response
 import retrofit2.http.GET
@@ -30,6 +28,13 @@ interface ApiMovieDB {
     @GET("movie/upcoming")
     suspend fun getUpcoming(
         @Query("api_key") api: String,
+        @Query("page") page: Int
+    ): Response<MoviesParams>
+
+    @GET("search/movie")
+    suspend fun getSearch(
+        @Query("api_key") api: String,
+        @Query("query") query: String,
         @Query("page") page: Int
     ): Response<MoviesParams>
 }

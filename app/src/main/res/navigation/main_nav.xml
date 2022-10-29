@@ -7,35 +7,44 @@
 
     <fragment
         android:id="@+id/popularFragment"
-        android:name="com.arief.moviedb.ui.popular.PopularFragment"
-        android:label="fragment_popular"
+        android:name="com.arief.moviedb.ui.movie.popular.PopularFragment"
+        android:label="Popular Movies"
         tools:layout="@layout/fragment_popular" >
         <action
             android:id="@+id/action_popularFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_popularFragment_to_upcomingFragment"
+            app:destination="@id/upcomingFragment"
+            app:launchSingleTop="true"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/nowPlayingFragment"
-        android:name="com.arief.moviedb.ui.nowplaying.NowPlayingFragment"
-        android:label="fragment_now_playing"
+        android:name="com.arief.moviedb.ui.movie.nowplaying.NowPlayingFragment"
+        android:label="Now Playing Movies"
         tools:layout="@layout/fragment_now_playing" >
         <action
             android:id="@+id/action_nowPlayingFragment_to_detailFragment"
+            app:launchSingleTop="true"
+            app:popUpToInclusive="true"
             app:destination="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/upcomingFragment"
-        android:name="com.arief.moviedb.ui.upcoming.UpcomingFragment"
-        android:label="fragment_upcoming"
+        android:name="com.arief.moviedb.ui.movie.upcoming.UpcomingFragment"
+        android:label="Upcoming Movies"
         tools:layout="@layout/fragment_upcoming" >
         <action
             android:id="@+id/action_upcomingFragment_to_detailFragment"
+            app:launchSingleTop="true"
+            app:popUpToInclusive="true"
             app:destination="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.arief.moviedb.ui.search.SearchFragment"
-        android:label="fragment_search"
+        android:label="Search Movies"
         tools:layout="@layout/fragment_search" >
         <action
             android:id="@+id/action_searchFragment_to_detailFragment"
@@ -44,7 +53,7 @@
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.arief.moviedb.ui.favorite.FavoriteFragment"
-        android:label="fragment_favorite"
+        android:label="Favorite Movies"
         tools:layout="@layout/fragment_favorite" >
         <action
             android:id="@+id/action_favoriteFragment_to_detailFragment"
@@ -53,6 +62,6 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.arief.moviedb.ui.detail.DetailFragment"
-        android:label="fragment_detail"
+        android:label="Movie Detail"
         tools:layout="@layout/fragment_detail" />
 </navigation>

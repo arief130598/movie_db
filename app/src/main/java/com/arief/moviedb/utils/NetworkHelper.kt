@@ -22,6 +22,7 @@ class NetworkHelper constructor(private val context: Context) {
                 else -> false
             }
         } else {
+            @Suppress("DEPRECATION")
             connectivityManager.run {
                 connectivityManager.activeNetworkInfo?.run {
                     result = when (type) {

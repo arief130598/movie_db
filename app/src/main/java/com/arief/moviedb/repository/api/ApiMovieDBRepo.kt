@@ -14,4 +14,6 @@ class ApiMovieDBRepo(private val apiMovieDB: ApiMovieDB) {
     suspend fun getNowPlaying(api_key: String, page:Int): Response<MoviesParams> = apiMovieDB.getNowPlaying(api_key, page)
 
     suspend fun getUpcoming(api_key: String, page:Int): Response<MoviesParams> = apiMovieDB.getUpcoming(api_key, page)
+
+    suspend fun getSearch(api_key: String, query:String, page:Int): Response<MoviesParams> = apiMovieDB.getSearch(api_key, query, page)
 }

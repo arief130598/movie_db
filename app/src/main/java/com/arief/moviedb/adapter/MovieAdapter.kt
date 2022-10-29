@@ -8,9 +8,11 @@ import com.arief.moviedb.R
 import com.arief.moviedb.databinding.RvMoviesBinding
 import com.arief.moviedb.model.Genres
 import com.arief.moviedb.model.Movies
-import com.arief.moviedb.ui.nowplaying.NowPlayingFragment
-import com.arief.moviedb.ui.popular.PopularFragment
-import com.arief.moviedb.ui.upcoming.UpcomingFragment
+import com.arief.moviedb.ui.favorite.FavoriteFragment
+import com.arief.moviedb.ui.movie.nowplaying.NowPlayingFragment
+import com.arief.moviedb.ui.movie.popular.PopularFragment
+import com.arief.moviedb.ui.movie.upcoming.UpcomingFragment
+import com.arief.moviedb.ui.search.SearchFragment
 import com.bumptech.glide.Glide
 
 class MovieAdapter(private var items: List<Movies>, private val fragment: Fragment) :
@@ -46,10 +48,8 @@ class MovieAdapter(private var items: List<Movies>, private val fragment: Fragme
             }
             binding.favorite.setOnClickListener {
                 if(favorite.contains(item)){
-                    binding.favorite.setImageResource(R.drawable.ic_favorite_border_32)
                     deleteFavorite(item)
                 }else{
-                    binding.favorite.setImageResource(R.drawable.ic_favorite_32)
                     addFavorite(item)
                 }
             }
@@ -57,10 +57,19 @@ class MovieAdapter(private var items: List<Movies>, private val fragment: Fragme
         }
     }
 
+    fun clearData(){
+        this.items = listOf()
+        notifyDataSetChanged()
+    }
+
+    fun setData(data : List<Movies>){
+        this.items = data
+    }
+
     fun addData(data : List<Movies>){
         val lastPosition = this.items.size
         this.items += data
-        notifyItemInserted(lastPosition)
+        notifyItemRangeInserted(lastPosition, this.items.size-1)
     }
 
     fun setGenre(data : List<Genres>){
@@ -73,7 +82,6 @@ class MovieAdapter(private var items: List<Movies>, private val fragment: Fragme
     }
 
     fun addFavorite(data: Movies){
-        this.favorite.add(data)
         when (fragment) {
             is PopularFragment -> {
                 fragment.insertFavorite(data)
@@ -82,13 +90,18 @@ class MovieAdapter(private var items: List<Movies>, private val fragment: Fragme
                 fragment.insertFavorite(data)
             }
             is UpcomingFragment -> {
+                fragment.insertFavorite(data)
+            }
+            is FavoriteFragment -> {
+                fragment.insertFavorite(data)
+            }
+            is SearchFragment -> {
                 fragment.insertFavorite(data)
             }
         }
     }
 
     fun deleteFavorite(data: Movies) {
-        this.favorite.remove(data)
         when (fragment) {
             is PopularFragment -> {
                 fragment.deleteFavorite(data)
@@ -97,6 +110,12 @@ class MovieAdapter(private var items: List<Movies>, private val fragment: Fragme
                 fragment.deleteFavorite(data)
             }
             is UpcomingFragment -> {
+                fragment.deleteFavorite(data)
+            }
+            is FavoriteFragment -> {
+                fragment.deleteFavorite(data)
+            }
+            is SearchFragment -> {
                 fragment.deleteFavorite(data)
             }
         }

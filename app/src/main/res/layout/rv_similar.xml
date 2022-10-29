@@ -9,7 +9,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/mainCard"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/dim8"
         app:cardElevation="@dimen/dim4"
@@ -21,26 +21,19 @@
         android:layout_marginEnd="@dimen/dim16">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:weightSum="1">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_weight="0.25"
-                app:cardCornerRadius="@dimen/dim8"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/poster"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/no_image"
-                    android:contentDescription="@string/poster"/>
-
-            </androidx.cardview.widget.CardView>
+            <ImageView
+                android:id="@+id/poster"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxWidth="@dimen/dim90"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                android:src="@drawable/no_image"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
@@ -86,7 +79,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_star"
-                    android:contentDescription="@string/rating"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="@+id/rating"
                     app:layout_constraintTop_toTopOf="@+id/rating" />
@@ -130,7 +122,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/dim8"
                     android:src="@drawable/ic_favorite_border_32"
-                    android:contentDescription="@string/favorite"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="@+id/genres"
                     app:layout_constraintTop_toTopOf="@+id/genres" />
