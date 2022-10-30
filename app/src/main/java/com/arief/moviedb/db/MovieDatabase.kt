@@ -1,7 +1,6 @@
 package com.arief.moviedb.db
 
 import android.content.Context
-import androidx.databinding.adapters.Converters
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -12,8 +11,16 @@ import com.arief.moviedb.model.Genres
 import com.arief.moviedb.model.Movies
 import com.arief.moviedb.utils.MovieDBConverters
 
+/**
+ *
+ * Database Class for configuration Room Database</br>
+ * Add inside entities for each class to add New Table</br>
+ * Create abstract class for each DAO interface</br>
+ * Each releasing the apps dont forgot to makesure DB Version is same with Apps Version
+ *
+ */
 @Database(
-    entities = [ // Add class to add new DB,
+    entities = [ // Add class to add new Table,
         Movies::class,
         Genres::class
     ],

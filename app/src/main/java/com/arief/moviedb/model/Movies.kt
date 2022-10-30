@@ -4,6 +4,24 @@ import android.os.Parcelable
 import androidx.room.Entity
 import kotlinx.parcelize.Parcelize
 
+/**
+ *
+ * Model Class for movies and movies table
+ *
+ * @property adult
+ * @property backdrop_path
+ * @property genre_ids
+ * @property id
+ * @property original_language
+ * @property original_title
+ * @property overview
+ * @property popularity
+ * @property poster_path
+ * @property release_date
+ * @property title
+ * @property vote_average
+ * @property vote_count
+ */
 @Parcelize
 @Entity(tableName = "movies", primaryKeys = ["id"])
 data class Movies(

@@ -11,6 +11,12 @@ import com.arief.moviedb.model.Movies
 import com.arief.moviedb.ui.detail.DetailFragment
 import com.bumptech.glide.Glide
 
+/**
+ *
+ * This adapter use for displaying similar movies that opened in Detail Fragment
+ *
+ * @property items is List of Movies Data
+ */
 class SimilarAdapter(private var items: List<Movies>, private val fragment: Fragment) :
     RecyclerView.Adapter<SimilarAdapter.ViewHolder>() {
 
@@ -25,6 +31,7 @@ class SimilarAdapter(private var items: List<Movies>, private val fragment: Frag
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(items[position])
 
     inner class ViewHolder(val binding: RvSimilarBinding) : RecyclerView.ViewHolder(binding.root) {
+
         fun bind(item: Movies) {
             Glide.with(fragment)
                 .load(fragment.getString(R.string.image_url) + item.poster_path)

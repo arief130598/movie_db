@@ -7,6 +7,11 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
+/**
+ *
+ * Interface for list function to call rest api from Movie DB
+ *
+ */
 interface ApiMovieDB {
 
     @GET("genre/movie/list")

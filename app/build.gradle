@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id "androidx.navigation.safeargs.kotlin"
     id 'kotlin-parcelize'
+    id 'org.jetbrains.dokka'
 }
 
 android {
@@ -37,6 +38,24 @@ android {
     }
     buildFeatures {
         dataBinding true
+    }
+
+    // Dokka Configuration
+    dokkaHtml.configure {
+        dokkaSourceSets {
+            named("main") {
+                includeNonPublic.set(true)
+                includes.from("module.md")
+            }
+        }
+    }
+    tasks.named("dokkaHtml"){
+        moduleName.set("$rootProject.name")
+    }
+    tasks.withType(dokkaHtml.getClass()).configureEach {
+        pluginsMapConfiguration.set(
+                ["org.jetbrains.dokka.base.DokkaBase": """{ "separateInheritedMembers": true}"""]
+        )
     }
 }
 

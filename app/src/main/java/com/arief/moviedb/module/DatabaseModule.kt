@@ -5,6 +5,11 @@ import com.arief.moviedb.db.MovieDatabase
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
+/**
+ *
+ * Module to Provide Room Database
+ *
+ */
 val dbModule = module {
     single { provideDatabase(androidContext()) }
 }

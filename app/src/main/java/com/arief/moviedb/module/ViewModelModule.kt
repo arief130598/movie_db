@@ -9,6 +9,11 @@ import com.arief.moviedb.ui.search.SearchViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
+/**
+ *
+ * Module to Provide ViewModel
+ *
+ */
 val viewModelModule = module {
     viewModel { MovieViewModel(get(), get(), get(), get()) }
     viewModel { PopularViewModel(get(), get()) }

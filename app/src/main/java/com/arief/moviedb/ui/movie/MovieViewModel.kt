@@ -12,6 +12,13 @@ import com.arief.moviedb.repository.db.MoviesRepo
 import com.arief.moviedb.utils.NetworkHelper
 import kotlinx.coroutines.*
 
+/**
+ * Movie ViewModel
+ *
+ * This is activity viewmodel for MainActivity <br/>
+ * Main function from this viewmodel is to synchronized favorites movies for each fragment
+ *
+ */
 class MovieViewModel (private val moviesRepo: MoviesRepo,
                       private val genresRepo: GenresRepo,
                       private val apiMovieDBRepo: ApiMovieDBRepo,
@@ -39,6 +46,10 @@ class MovieViewModel (private val moviesRepo: MoviesRepo,
         }
     }
 
+    /**
+     * Call MovieDB API to get list of genres
+     *
+     */
     private fun getGenres(){
         ioScope.launch {
             if (networkHelper.isNetworkConnected()) {
@@ -69,6 +80,11 @@ class MovieViewModel (private val moviesRepo: MoviesRepo,
         }
     }
 
+    /**
+     * Insert favorite then invoke favorite data
+     *
+     * @param item
+     */
     fun insertFavorite(item: Movies) {
         ioScope.launch {
             moviesRepo.insertSingle(item)
@@ -80,6 +96,11 @@ class MovieViewModel (private val moviesRepo: MoviesRepo,
         }
     }
 
+    /**
+     * Delete favorite and invoke favorite data
+     *
+     * @param item
+     */
     fun deleteFavorite(item: Movies) {
         ioScope.launch {
             moviesRepo.deleteSingle(item.id)

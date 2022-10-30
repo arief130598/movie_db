@@ -14,6 +14,13 @@ import com.arief.moviedb.model.Movies
 import com.arief.moviedb.ui.MainActivity
 import com.bumptech.glide.Glide
 
+/**
+ *
+ * This adapter use for displaying list of movies </br>
+ * Displaying Movie Poster, Title, Rating, Overview, Genres and Favorite Button </br>
+ *
+ * @property items is List of Movies Data
+ */
 class MovieAdapter(private var items: List<Movies>, private val fragment: Fragment) :
     RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
@@ -31,6 +38,7 @@ class MovieAdapter(private var items: List<Movies>, private val fragment: Fragme
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(items[position])
 
     inner class ViewHolder(val binding: RvMoviesBinding) : RecyclerView.ViewHolder(binding.root) {
+
         fun bind(item: Movies) {
             if(!item.poster_path.isNullOrEmpty()) {
                 Glide.with(fragment)
@@ -96,6 +104,9 @@ class MovieAdapter(private var items: List<Movies>, private val fragment: Fragme
         (fragment.requireActivity() as MainActivity).deleteFavorite(data)
     }
 
+    /**
+     * Limiting the maximum of overview chars to 100
+     */
     fun limitOverview(data: String): String{
         return if(data.length > 100) {
             var overview = data.substring(0, 100)
@@ -108,6 +119,9 @@ class MovieAdapter(private var items: List<Movies>, private val fragment: Fragme
         }
     }
 
+    /**
+     * List of Genres displaying with code, this function converting from that code to Genre Name
+     */
     fun convertGenres(data: List<Int>): String{
         var genres = ""
         return if(data.isNotEmpty()) {

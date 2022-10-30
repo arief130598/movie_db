@@ -27,6 +27,10 @@ class UpcomingViewModel(private val apiMovieDBRepo: ApiMovieDBRepo,
         getMovies()
     }
 
+    /**
+     * Call MovieDB API to get current upcoming movies
+     *
+     */
     fun getMovies(){
         page += 1
         viewModelScope.launch {
@@ -46,6 +50,12 @@ class UpcomingViewModel(private val apiMovieDBRepo: ApiMovieDBRepo,
         }
     }
 
+
+    /**
+     * Set last position on recycleView to display last position when fragment changed
+     *
+     * @param position
+     */
     fun setLastPosition(position: Int) {
         lastPositionAdapter = position
     }

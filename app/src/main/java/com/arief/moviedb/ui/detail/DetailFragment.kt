@@ -89,7 +89,7 @@ class DetailFragment : Fragment() {
             }
         }
 
-        viewModel.getMovies(item.id)
+        viewModel.getSimilar(item.id)
     }
 
     private fun convertGenres(data: List<Int>): String{

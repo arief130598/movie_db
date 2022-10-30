@@ -11,6 +11,7 @@ import com.arief.moviedb.utils.NetworkHelper
 import com.arief.moviedb.utils.Resource
 import kotlinx.coroutines.launch
 
+
 class DetailViewModel(private val apiMovieDBRepo: ApiMovieDBRepo,
                       private val networkHelper: NetworkHelper
 ) : ViewModel() {
@@ -21,7 +22,12 @@ class DetailViewModel(private val apiMovieDBRepo: ApiMovieDBRepo,
 
     var page = 0
 
-    fun getMovies(movie_id: Int) {
+    /**
+     * Call MovieDB API to get the similar movies from selected movie in detail
+     *
+     * @param movie_id
+     */
+    fun getSimilar(movie_id: Int) {
         page += 1
         viewModelScope.launch {
             _movies.postValue(Resource.loading(null))

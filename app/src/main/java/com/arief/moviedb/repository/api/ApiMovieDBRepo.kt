@@ -5,6 +5,12 @@ import com.arief.moviedb.model.GenresParams
 import com.arief.moviedb.model.MoviesParams
 import retrofit2.Response
 
+/**
+ *
+ * Repository to call Movie DB from its interface <br/>
+ * Repository name must be same from interface function
+ *
+ */
 class ApiMovieDBRepo(private val apiMovieDB: ApiMovieDB) {
 
     suspend fun getGenres(api_key: String): Response<GenresParams> = apiMovieDB.getGenres(api_key)

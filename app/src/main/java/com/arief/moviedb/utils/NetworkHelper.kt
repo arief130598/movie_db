@@ -5,8 +5,19 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 
+/**
+ * Network helper for function that related to network or connection
+ *
+ * @property context
+ * @constructor Create empty Network helper
+ */
 class NetworkHelper constructor(private val context: Context) {
 
+    /**
+     * Check if device network is Connected
+     *
+     * @return
+     */
     fun isNetworkConnected(): Boolean {
         var result = false
         val connectivityManager =

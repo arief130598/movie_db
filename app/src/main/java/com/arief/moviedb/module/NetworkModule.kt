@@ -12,8 +12,19 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
+
+/**
+ *
+ * Main URL for Movie DB API
+ *
+ */
 const val BASE_URL: String = "https://api.themoviedb.org/3/"
 
+/**
+ *
+ * Module to Provide Networking
+ *
+ */
 val networkModule = module {
     single { provideOkHttpClient() }
     single { provideRetrofit(get()) }

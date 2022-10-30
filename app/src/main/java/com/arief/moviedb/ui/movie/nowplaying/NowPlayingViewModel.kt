@@ -11,6 +11,8 @@ import com.arief.moviedb.utils.NetworkHelper
 import com.arief.moviedb.utils.Resource
 import kotlinx.coroutines.*
 
+
+
 class NowPlayingViewModel(private val apiMovieDBRepo: ApiMovieDBRepo,
                           private val networkHelper: NetworkHelper) : ViewModel() {
 
@@ -26,6 +28,10 @@ class NowPlayingViewModel(private val apiMovieDBRepo: ApiMovieDBRepo,
         getMovies()
     }
 
+    /**
+     * Call MovieDB API to get current playing movies
+     *
+     */
     fun getMovies(){
         page += 1
         viewModelScope.launch {
@@ -45,6 +51,11 @@ class NowPlayingViewModel(private val apiMovieDBRepo: ApiMovieDBRepo,
         }
     }
 
+    /**
+     * Set last position on recycleView to display last position when fragment changed
+     *
+     * @param position
+     */
     fun setLastPosition(position: Int) {
         lastPositionAdapter = position
     }
