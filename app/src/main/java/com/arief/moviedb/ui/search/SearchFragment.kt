@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.arief.moviedb.R
 import com.arief.moviedb.adapter.MovieAdapter
 import com.arief.moviedb.databinding.FragmentSearchBinding
-import com.arief.moviedb.model.Movies
 import com.arief.moviedb.ui.MainActivity
 import com.arief.moviedb.ui.movie.MovieViewModel
 import com.arief.moviedb.utils.Status
@@ -46,18 +45,6 @@ class SearchFragment : Fragment() {
         false
         )
         return binding.root
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        (requireActivity() as MainActivity).binding.topAppBar.visibility = View.GONE
-        (requireActivity() as MainActivity).binding.navBottom.visibility = View.GONE
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        (requireActivity() as MainActivity).binding.topAppBar.visibility = View.VISIBLE
-        (requireActivity() as MainActivity).binding.navBottom.visibility = View.VISIBLE
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -169,11 +156,27 @@ class SearchFragment : Fragment() {
         }
     }
 
-    fun insertFavorite(item: Movies){
-        viewModelMovie.insertFavorite(item)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (requireActivity() as MainActivity).binding.topAppBar.visibility = View.GONE
+        (requireActivity() as MainActivity).binding.navBottom.visibility = View.GONE
     }
 
-    fun deleteFavorite(item: Movies){
-        viewModelMovie.deleteFavorite(item)
+    override fun onDetach() {
+        super.onDetach()
+        (requireActivity() as MainActivity).binding.topAppBar.visibility = View.VISIBLE
+        (requireActivity() as MainActivity).binding.navBottom.visibility = View.VISIBLE
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (requireActivity() as MainActivity).binding.topAppBar.visibility = View.GONE
+        (requireActivity() as MainActivity).binding.navBottom.visibility = View.GONE
+    }
+
+    override fun onPause() {
+        super.onPause()
+        (requireActivity() as MainActivity).binding.topAppBar.visibility = View.VISIBLE
+        (requireActivity() as MainActivity).binding.navBottom.visibility = View.VISIBLE
     }
 }

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Movie DB</string>
+    <string name="background_image_url">https://image.tmdb.org/t/p/w780</string>
     <string name="image_url">https://image.tmdb.org/t/p/w185</string>
     <string name="favorite">Favorite</string>
     <string name="popular">Popular</string>
@@ -14,4 +15,5 @@
     <string name="language">Language :</string>
     <string name="back">Back</string>
     <string name="poster">Poster</string>
+    <string name="background_poster">Background Poster</string>
 </resources>

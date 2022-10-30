@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.arief.moviedb.R
 import com.arief.moviedb.adapter.MovieAdapter
 import com.arief.moviedb.databinding.FragmentUpcomingBinding
-import com.arief.moviedb.model.Movies
 import com.arief.moviedb.ui.movie.MovieViewModel
 import com.arief.moviedb.utils.Status
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
@@ -120,14 +119,6 @@ class UpcomingFragment : Fragment() {
                 }
             }
         }
-    }
-
-    fun insertFavorite(item: Movies){
-        viewModelMovie.insertFavorite(item)
-    }
-
-    fun deleteFavorite(item: Movies){
-        viewModelMovie.deleteFavorite(item)
     }
 
 }

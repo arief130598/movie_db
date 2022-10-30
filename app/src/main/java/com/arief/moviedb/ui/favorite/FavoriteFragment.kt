@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.arief.moviedb.R
 import com.arief.moviedb.adapter.MovieAdapter
 import com.arief.moviedb.databinding.FragmentFavoriteBinding
-import com.arief.moviedb.model.Movies
 import com.arief.moviedb.ui.MainActivity
 import com.arief.moviedb.ui.movie.MovieViewModel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
@@ -35,18 +34,6 @@ class FavoriteFragment : Fragment() {
         return binding.root
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        (requireActivity() as MainActivity).binding.topAppBar.menu.findItem(R.id.favoriteFragment).isVisible = false
-        (requireActivity() as MainActivity).binding.navBottom.visibility = View.INVISIBLE
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        (requireActivity() as MainActivity).binding.topAppBar.menu.findItem(R.id.favoriteFragment).isVisible = true
-        (requireActivity() as MainActivity).binding.navBottom.visibility = View.VISIBLE
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter = MovieAdapter(listOf(), this@FavoriteFragment)
@@ -67,12 +54,27 @@ class FavoriteFragment : Fragment() {
         }
     }
 
-    fun insertFavorite(item: Movies){
-        viewModelMovie.insertFavorite(item)
+    override fun onResume() {
+        super.onResume()
+        (requireActivity() as MainActivity).binding.topAppBar.menu.findItem(R.id.favoriteFragment).isVisible = false
+        (requireActivity() as MainActivity).binding.navBottom.visibility = View.INVISIBLE
     }
 
-    fun deleteFavorite(item: Movies){
-        viewModelMovie.deleteFavorite(item)
+    override fun onPause() {
+        super.onPause()
+        (requireActivity() as MainActivity).binding.topAppBar.menu.findItem(R.id.favoriteFragment).isVisible = true
+        (requireActivity() as MainActivity).binding.navBottom.visibility = View.VISIBLE
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (requireActivity() as MainActivity).binding.topAppBar.menu.findItem(R.id.favoriteFragment).isVisible = false
+        (requireActivity() as MainActivity).binding.navBottom.visibility = View.INVISIBLE
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        (requireActivity() as MainActivity).binding.topAppBar.menu.findItem(R.id.favoriteFragment).isVisible = true
+        (requireActivity() as MainActivity).binding.navBottom.visibility = View.VISIBLE
+    }
 }

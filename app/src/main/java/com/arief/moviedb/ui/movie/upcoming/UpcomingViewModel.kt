@@ -3,6 +3,7 @@ package com.arief.moviedb.ui.movie.upcoming
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.arief.moviedb.BuildConfig
 import com.arief.moviedb.model.Movies
 import com.arief.moviedb.repository.api.ApiMovieDBRepo
@@ -13,8 +14,6 @@ import kotlinx.coroutines.*
 class UpcomingViewModel(private val apiMovieDBRepo: ApiMovieDBRepo,
                         private val networkHelper: NetworkHelper
 ) : ViewModel() {
-
-    private val ioScope = CoroutineScope(Job() + Dispatchers.IO)
 
     private val _movies = MutableLiveData<Resource<List<Movies>>>()
     val movies: LiveData<Resource<List<Movies>>>
@@ -30,7 +29,7 @@ class UpcomingViewModel(private val apiMovieDBRepo: ApiMovieDBRepo,
 
     fun getMovies(){
         page += 1
-        ioScope.launch {
+        viewModelScope.launch {
             _movies.postValue(Resource.loading(null))
             if (networkHelper.isNetworkConnected()) {
                 apiMovieDBRepo.getUpcoming(BuildConfig.API_KEY, page).let {
@@ -53,6 +52,5 @@ class UpcomingViewModel(private val apiMovieDBRepo: ApiMovieDBRepo,
 
     override fun onCleared() {
         super.onCleared()
-        ioScope.cancel()
     }
 }

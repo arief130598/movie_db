@@ -13,11 +13,6 @@
         <action
             android:id="@+id/action_popularFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
-        <action
-            android:id="@+id/action_popularFragment_to_upcomingFragment"
-            app:destination="@id/upcomingFragment"
-            app:launchSingleTop="true"
-            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/nowPlayingFragment"
@@ -63,5 +58,9 @@
         android:id="@+id/detailFragment"
         android:name="com.arief.moviedb.ui.detail.DetailFragment"
         android:label="Movie Detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="movies"
+            app:argType="com.arief.moviedb.model.Movies" />
+    </fragment>
 </navigation>

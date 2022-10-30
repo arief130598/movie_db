@@ -17,118 +17,39 @@
         app:strokeWidth="0.8dp"
         android:layout_marginTop="@dimen/dim8"
         android:layout_marginBottom="@dimen/dim8"
-        android:layout_marginStart="@dimen/dim16"
         android:layout_marginEnd="@dimen/dim16">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:weightSum="1">
 
             <ImageView
                 android:id="@+id/poster"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:maxWidth="@dimen/dim90"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="@dimen/dim100"
+                android:maxHeight="@dimen/dim160"
                 android:scaleType="centerCrop"
                 android:adjustViewBounds="true"
-                android:src="@drawable/no_image"/>
+                android:src="@drawable/no_image"
+                android:contentDescription="@string/poster"/>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.75"
-                android:paddingTop="@dimen/dim8"
-                android:paddingBottom="@dimen/dim8"
-                android:paddingStart="@dimen/dim20"
-                android:paddingEnd="@dimen/dim8">
-
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dim16"
-                    android:fontFamily="@font/cabin_medium"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/text20"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@id/rating"
-                    app:layout_constraintHorizontal_bias="0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Black Adam" />
-
-                <TextView
-                    android:id="@+id/rating"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dim4"
-                    android:fontFamily="@font/roboto"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/text16"
-                    android:textStyle="bold"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/star"
-                    tools:text="4.7" />
-
-                <ImageView
-                    android:id="@+id/star"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_star"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="@+id/rating"
-                    app:layout_constraintTop_toTopOf="@+id/rating" />
-
-                <TextView
-                    android:id="@+id/overview"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dim4"
-                    android:fontFamily="@font/roboto"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/text14"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/title"
-                    tools:text="Black Adam sad sa dsaf dsadsa dsa dsa dsa das dsa dsa das dasdsad dsad asd sad sadsad" />
-
-                <TextView
-                    android:id="@+id/genres"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dim8"
-                    android:layout_marginTop="@dimen/dim4"
-                    android:fontFamily="@font/roboto"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/text14"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/favorite"
-                    app:layout_constraintHorizontal_bias="0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/overview"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    tools:text="Action, Horror, Scifi" />
-
-                <ImageView
-                    android:id="@+id/favorite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dim8"
-                    android:src="@drawable/ic_favorite_border_32"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="@+id/genres"
-                    app:layout_constraintTop_toTopOf="@+id/genres" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:minHeight="@dimen/dim80"
+                android:maxWidth="@dimen/dim120"
+                android:padding="@dimen/dim4"
+                android:fontFamily="@font/roboto"
+                android:textAlignment="center"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text14"
+                android:textStyle="bold"
+                tools:text="Black Adam" />
         </LinearLayout>
-
 
     </com.google.android.material.card.MaterialCardView>
 

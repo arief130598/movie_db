@@ -1,18 +1,17 @@
 package com.arief.moviedb.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.arief.moviedb.R
 import com.arief.moviedb.databinding.RvMoviesBinding
 import com.arief.moviedb.model.Genres
 import com.arief.moviedb.model.Movies
-import com.arief.moviedb.ui.favorite.FavoriteFragment
-import com.arief.moviedb.ui.movie.nowplaying.NowPlayingFragment
-import com.arief.moviedb.ui.movie.popular.PopularFragment
-import com.arief.moviedb.ui.movie.upcoming.UpcomingFragment
-import com.arief.moviedb.ui.search.SearchFragment
+import com.arief.moviedb.ui.MainActivity
 import com.bumptech.glide.Glide
 
 class MovieAdapter(private var items: List<Movies>, private val fragment: Fragment) :
@@ -33,10 +32,12 @@ class MovieAdapter(private var items: List<Movies>, private val fragment: Fragme
 
     inner class ViewHolder(val binding: RvMoviesBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Movies) {
-            Glide.with(fragment)
-                .load(fragment.getString(R.string.image_url) + item.poster_path)
-                .error(R.drawable.no_image)
-                .into(binding.poster)
+            if(!item.poster_path.isNullOrEmpty()) {
+                Glide.with(fragment)
+                    .load(fragment.getString(R.string.image_url) + item.poster_path)
+                    .error(R.drawable.no_image)
+                    .into(binding.poster)
+            }
             binding.title.text = item.title
             binding.rating.text = item.vote_average.toString()
             binding.overview.text = limitOverview(item.overview)
@@ -53,10 +54,15 @@ class MovieAdapter(private var items: List<Movies>, private val fragment: Fragme
                     addFavorite(item)
                 }
             }
+            binding.mainCard.setOnClickListener {
+                val bundle = bundleOf("movies" to item)
+                fragment.findNavController().navigate(R.id.detailFragment, bundle)
+            }
             binding.executePendingBindings()
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun clearData(){
         this.items = listOf()
         notifyDataSetChanged()
@@ -76,49 +82,18 @@ class MovieAdapter(private var items: List<Movies>, private val fragment: Fragme
         this.genres = data
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setFavorite(data : List<Movies>){
         this.favorite = data as MutableList<Movies>
         notifyDataSetChanged()
     }
 
     fun addFavorite(data: Movies){
-        when (fragment) {
-            is PopularFragment -> {
-                fragment.insertFavorite(data)
-            }
-            is NowPlayingFragment -> {
-                fragment.insertFavorite(data)
-            }
-            is UpcomingFragment -> {
-                fragment.insertFavorite(data)
-            }
-            is FavoriteFragment -> {
-                fragment.insertFavorite(data)
-            }
-            is SearchFragment -> {
-                fragment.insertFavorite(data)
-            }
-        }
+        (fragment.requireActivity() as MainActivity).insertFavorite(data)
     }
 
     fun deleteFavorite(data: Movies) {
-        when (fragment) {
-            is PopularFragment -> {
-                fragment.deleteFavorite(data)
-            }
-            is NowPlayingFragment -> {
-                fragment.deleteFavorite(data)
-            }
-            is UpcomingFragment -> {
-                fragment.deleteFavorite(data)
-            }
-            is FavoriteFragment -> {
-                fragment.deleteFavorite(data)
-            }
-            is SearchFragment -> {
-                fragment.deleteFavorite(data)
-            }
-        }
+        (fragment.requireActivity() as MainActivity).deleteFavorite(data)
     }
 
     fun limitOverview(data: String): String{

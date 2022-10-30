@@ -9,10 +9,14 @@ import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.arief.moviedb.R
 import com.arief.moviedb.databinding.ActivityMainBinding
+import com.arief.moviedb.model.Movies
+import com.arief.moviedb.ui.movie.MovieViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
+    private val viewModel : MovieViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,5 +36,13 @@ class MainActivity : AppCompatActivity() {
             it.onNavDestinationSelected(navController)
             true
         }
+    }
+
+    fun insertFavorite(item: Movies){
+        viewModel.insertFavorite(item)
+    }
+
+    fun deleteFavorite(item: Movies){
+        viewModel.deleteFavorite(item)
     }
 }

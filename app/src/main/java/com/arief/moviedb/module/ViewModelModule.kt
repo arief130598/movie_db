@@ -1,5 +1,6 @@
 package com.arief.moviedb.module
 
+import com.arief.moviedb.ui.detail.DetailViewModel
 import com.arief.moviedb.ui.movie.MovieViewModel
 import com.arief.moviedb.ui.movie.nowplaying.NowPlayingViewModel
 import com.arief.moviedb.ui.movie.popular.PopularViewModel
@@ -14,4 +15,5 @@ val viewModelModule = module {
     viewModel { NowPlayingViewModel(get(), get()) }
     viewModel { UpcomingViewModel(get(), get()) }
     viewModel { SearchViewModel(get(), get()) }
+    viewModel { DetailViewModel(get(), get()) }
 }
