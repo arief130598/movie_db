@@ -1,11 +1,11 @@
-#Movie DB Apps
+##Movie DB Apps
 Movie-DB Apps is apps to displaying list of movie that has feature :
-    1. Popular Movies
-    2. Now Playing Movies
-    3. Upcoming Movies
-    4. Favorite Movies
-    5. Search Movies
-    6. Display Detail of Movies
+1. Popular Movies
+2. Now Playing Movies
+3. Upcoming Movies
+4. Favorite Movies
+5. Search Movies
+6. Display Detail of Movies
 
 Movies Sources is from TMDB, TMDB is a community built movie and TV database.
 Every piece of data has been added by our amazing community dating back to 2008.
@@ -14,8 +14,8 @@ Put simply, we live and breathe community and that's precisely what makes us dif
 
 ## Screeshots
 <p align="center">
-<img src="/preview/first_screen.png" width="32%"/>
-<img src="/preview/second_screen.png" width="32%"/>
+<img src="/preview/preview_list.jpg" width="32%"/>
+<img src="/preview/preview_detail.jpg" width="32%"/>
 </p>
 
 ## How to build on your environment
@@ -31,7 +31,6 @@ Build and Lets Rock 😉
 6. **repository** Helper class to call API or Room Database
 7. **ui** Containing Activity, Fragment or other that related to User Interface
 8. **utils** Ultilities package that contains helper class
-9. 
 ## Libraries Used
 
 This apps using MVVM Architecture with Koin and other libraries like :
