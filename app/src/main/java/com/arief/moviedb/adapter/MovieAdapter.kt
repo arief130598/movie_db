@@ -127,8 +127,10 @@ class MovieAdapter(private var items: List<Movies>, private val fragment: Fragme
         return if(data.isNotEmpty()) {
             data.forEach {
                 val item = this.genres.filter { x -> x.id == it }
-                if (item.isNotEmpty()) {
-                    genres += "${item[0].name}, "
+                genres += if (item.isNotEmpty()) {
+                    "${item[0].name}, "
+                }else{
+                    "${it}, "
                 }
             }
             if(genres.length > 2) {

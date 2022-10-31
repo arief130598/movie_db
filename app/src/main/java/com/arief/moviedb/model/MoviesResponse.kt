@@ -5,7 +5,7 @@ package com.arief.moviedb.model
  * Model class for receiving API to get list of Movies
  *
  */
-data class MoviesParams(
+data class MoviesResponse(
     var page:Int = 0,
     var results: List<Movies> = listOf(),
     var total_pages:Int = 0,

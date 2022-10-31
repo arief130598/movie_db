@@ -20,15 +20,13 @@ class DetailViewModel(private val apiMovieDBRepo: ApiMovieDBRepo,
     val movies: LiveData<Resource<List<Movies>>>
         get() = _movies
 
-    var page = 0
-
     /**
      * Call MovieDB API to get the similar movies from selected movie in detail
      *
      * @param movie_id
      */
     fun getSimilar(movie_id: Int) {
-        page += 1
+        val page = 1
         viewModelScope.launch {
             _movies.postValue(Resource.loading(null))
             if (networkHelper.isNetworkConnected()) {

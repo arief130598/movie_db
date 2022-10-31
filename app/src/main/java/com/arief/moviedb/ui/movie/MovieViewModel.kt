@@ -40,7 +40,7 @@ class MovieViewModel (private val moviesRepo: MoviesRepo,
         getFavorite()
     }
 
-    fun getFavorite(){
+    private fun getFavorite(){
         ioScope.launch {
             _favorite.postValue(moviesRepo.getList())
         }
@@ -87,12 +87,14 @@ class MovieViewModel (private val moviesRepo: MoviesRepo,
      */
     fun insertFavorite(item: Movies) {
         ioScope.launch {
-            moviesRepo.insertSingle(item)
-        }.invokeOnCompletion {
-            val favorite = _favorite.value as MutableList
-            favorite.add(item)
-            val favoriteList = favorite.toList()
-            _favorite.postValue(favoriteList)
+            moviesRepo.insertSingle(item).let {
+                if(it > 0) {
+                    val favorite = _favorite.value as MutableList
+                    favorite.add(item)
+                    val favoriteList = favorite.toList()
+                    _favorite.postValue(favoriteList)
+                }
+            }
         }
     }
 
@@ -103,12 +105,14 @@ class MovieViewModel (private val moviesRepo: MoviesRepo,
      */
     fun deleteFavorite(item: Movies) {
         ioScope.launch {
-            moviesRepo.deleteSingle(item.id)
-        }.invokeOnCompletion {
-            val favorite = _favorite.value as MutableList
-            favorite.remove(item)
-            val favoriteList = favorite.toList()
-            _favorite.postValue(favoriteList)
+            moviesRepo.deleteSingle(item.id).let {
+                if(it > 0){
+                    val favorite = _favorite.value as MutableList
+                    favorite.remove(item)
+                    val favoriteList = favorite.toList()
+                    _favorite.postValue(favoriteList)
+                }
+            }
         }
     }
 

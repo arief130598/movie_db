@@ -11,15 +11,15 @@ import com.arief.moviedb.model.Genres
  */
 class GenresRepo(private val db: MovieDatabase) {
 
-    suspend fun getSingle(id: Int) = db.genresTable.getSingle(id)
+    suspend fun getSingle(id: Int): Genres = db.genresTable.getSingle(id)
 
-    suspend fun getList() = db.genresTable.getList()
+    suspend fun getList(): List<Genres> = db.genresTable.getList()
 
-    suspend fun insertList(genres: List<Genres>) = db.genresTable.insertList(genres)
+    suspend fun insertList(genres: List<Genres>): List<Long> = db.genresTable.insertList(genres)
 
-    suspend fun insertSingle(genres: Genres) = db.genresTable.insertSingle(genres)
+    suspend fun insertSingle(genres: Genres): Long = db.genresTable.insertSingle(genres)
 
-    suspend fun deleteAll() = db.genresTable.deleteAll()
+    suspend fun deleteAll(): Int = db.genresTable.deleteAll()
 
-    suspend fun deleteSingle(id: Int) = db.genresTable.deleteSingle(id)
+    suspend fun deleteSingle(id: Int): Int = db.genresTable.deleteSingle(id)
 }

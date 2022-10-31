@@ -6,6 +6,6 @@ package com.arief.moviedb.model
  *
  * @property genres
  */
-data class GenresParams(
+data class GenresResponse(
     var genres: List<Genres> = listOf()
 )

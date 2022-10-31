@@ -11,15 +11,15 @@ import com.arief.moviedb.model.Movies
  */
 class MoviesRepo(private val db: MovieDatabase) {
 
-    suspend fun getSingle(id: Int) = db.moviesTable.getSingle(id)
+    suspend fun getSingle(id: Int): Movies = db.moviesTable.getSingle(id)
 
-    suspend fun getList() = db.moviesTable.getList()
+    suspend fun getList(): List<Movies> = db.moviesTable.getList()
 
-    suspend fun insertList(movies: List<Movies>) = db.moviesTable.insertList(movies)
+    suspend fun insertList(movies: List<Movies>): List<Long> = db.moviesTable.insertList(movies)
 
-    suspend fun insertSingle(movies: Movies) = db.moviesTable.insertSingle(movies)
+    suspend fun insertSingle(movies: Movies): Long = db.moviesTable.insertSingle(movies)
 
-    suspend fun deleteAll() = db.moviesTable.deleteAll()
+    suspend fun deleteAll(): Int = db.moviesTable.deleteAll()
 
-    suspend fun deleteSingle(id: Int) = db.moviesTable.deleteSingle(id)
+    suspend fun deleteSingle(id: Int): Int = db.moviesTable.deleteSingle(id)
 }
