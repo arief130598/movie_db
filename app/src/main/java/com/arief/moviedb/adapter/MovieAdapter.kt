@@ -50,13 +50,13 @@ class MovieAdapter(private var items: List<Movies>, private val fragment: Fragme
             binding.rating.text = item.vote_average.toString()
             binding.overview.text = limitOverview(item.overview)
             binding.genres.text = convertGenres(item.genre_ids)
-            if(favorite.contains(item)){
+            if(favorite.any { it.id == item.id }){
                 binding.favorite.setImageResource(R.drawable.ic_favorite_32)
             }else{
                 binding.favorite.setImageResource(R.drawable.ic_favorite_border_32)
             }
             binding.favorite.setOnClickListener {
-                if(favorite.contains(item)){
+                if(favorite.any { it.id == item.id }){
                     deleteFavorite(item)
                 }else{
                     addFavorite(item)

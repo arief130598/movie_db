@@ -1,4 +1,3 @@
-##Movie DB Apps
 Movie-DB Apps is apps to displaying list of movie that has feature :
 1. Popular Movies
 2. Now Playing Movies

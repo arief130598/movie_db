@@ -74,13 +74,13 @@ class DetailFragment : Fragment() {
         binding.overview.text = item.overview
         binding.genres.text = "Genres : ${convertGenres(item.genre_ids)}"
 
-        if(viewModelMovie.favorite.value!!.contains(item)){
+        if(viewModelMovie.favorite.value!!.any { it.id == item.id }){
             binding.favorite.setImageResource(R.drawable.ic_favorite_32)
         }else{
             binding.favorite.setImageResource(R.drawable.ic_favorite_border_32)
         }
         binding.favorite.setOnClickListener {
-            if(viewModelMovie.favorite.value!!.contains(item)){
+            if(viewModelMovie.favorite.value!!.any { it.id == item.id }){
                 binding.favorite.setImageResource(R.drawable.ic_favorite_border_32)
                 (requireActivity() as MainActivity).deleteFavorite(item)
             }else{

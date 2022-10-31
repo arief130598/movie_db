@@ -41,21 +41,18 @@ android {
     }
 
     // Dokka Configuration
-    dokkaHtml.configure {
-        dokkaSourceSets {
-            named("main") {
-                includeNonPublic.set(true)
+    dokkaHtml{
+        moduleName = "$rootProject.name"
+        dokkaSourceSets{
+            configureEach{
                 includes.from("module.md")
+                includeNonPublic.set(true)
+
+                pluginsMapConfiguration.set(
+                        ["org.jetbrains.dokka.base.DokkaBase": """{ "separateInheritedMembers": true}"""]
+                )
             }
         }
-    }
-    tasks.named("dokkaHtml"){
-        moduleName.set("$rootProject.name")
-    }
-    tasks.withType(dokkaHtml.getClass()).configureEach {
-        pluginsMapConfiguration.set(
-                ["org.jetbrains.dokka.base.DokkaBase": """{ "separateInheritedMembers": true}"""]
-        )
     }
 }
 

@@ -93,9 +93,9 @@ class PopularFragment : Fragment() {
                         binding.mainShimmer.apply {
                                 stopShimmer()
                                 visibility = View.GONE
-                                binding.rvData.visibility = View.VISIBLE
-                                adapter.addData(it.data!!)
                         }
+                        binding.rvData.visibility = View.VISIBLE
+                        adapter.addData(it.data!!)
                     }else{
                         binding.progressBar.visibility = View.GONE
                         adapter.addData(it.data!!)
