@@ -44,4 +44,3 @@ This apps using MVVM Architecture with Koin and other libraries like :
 - Room
 - Kdoc-er & Dokka https://kotlinlang.org/docs/kotlin-doc.html#module-and-package-documentation
 - Mockito https://site.mockito.org/
-- MockWebServer 🎭 https://github.com/square/okhttp/tree/master/mockwebserver
