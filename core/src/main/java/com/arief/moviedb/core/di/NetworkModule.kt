@@ -2,7 +2,6 @@ package com.arief.moviedb.core.di
 
 import android.content.Context
 import com.arief.moviedb.core.utils.NetworkHelper
-import com.arief.moviedb.data.datasource.remote.ApiMovieDB
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,11 +21,11 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    private fun provideNetworkHelper(context: Context) = NetworkHelper(context)
+    fun provideNetworkHelper(context: Context) = NetworkHelper(context)
 
     @Provides
     @Singleton
-    private fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
+    fun provideOkHttpClient() = if (true) {
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         OkHttpClient.Builder()
@@ -42,7 +41,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    private fun provideRetrofit(
+    fun provideRetrofit(
         okHttpClient: OkHttpClient
     ): Retrofit =
         Retrofit.Builder()
@@ -50,10 +49,10 @@ class NetworkModule {
             .baseUrl(BASE_URL)
             .client(okHttpClient)
             .build()
-
-    @Provides
-    @Singleton
-    private fun provideApiService(retrofit: Retrofit): ApiMovieDB =
-        retrofit.create(ApiMovieDB::class.java)
+//
+//    @Provides
+//    @Singleton
+//    private fun provideApiService(retrofit: Retrofit): ApiMovieDB =
+//        retrofit.create(ApiMovieDB::class.java)
 
 }

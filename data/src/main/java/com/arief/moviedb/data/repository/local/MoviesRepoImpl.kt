@@ -1,6 +1,6 @@
 package com.arief.moviedb.data.repository.local
 
-import com.arief.moviedb.core.db.MovieDatabase
+import com.arief.moviedb.data.datasource.local.MovieDatabase
 import com.arief.moviedb.domain.model.Movies
 import javax.inject.Inject
 

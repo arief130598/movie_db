@@ -5,8 +5,8 @@ object Ext {
 object AndroidConfig {
     const val APPLICATION_ID = "com.arief.moviedb"
     const val MIN_SDK = 21
-    const val TARGET_SDK = 32
-    const val COMPILE_SDK = 32
+    const val TARGET_SDK = 33
+    const val COMPILE_SDK = 33
 
     private const val versionMajor = 1
     private const val versionMinor = 0

@@ -2,7 +2,7 @@ import extensions.coreModuleDeps
 import extensions.featureModuleDeps
 
 plugins {
-    id(Plugins.ANDROID_APPLICATION)
+    id(Plugins.ANDROID_DYNAMIC_FEATURE)
     kotlin(Plugins.ANDROID)
     kotlin(Plugins.KAPT)
     id(Plugins.NAVIGATION_SAFE_ARGS)

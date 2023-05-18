@@ -1,11 +1,9 @@
 import extensions.coreModuleDeps
 
 plugins {
-    id(Plugins.ANDROID_APPLICATION)
+    id(Plugins.ANDROID_LIBRARY)
     kotlin(Plugins.ANDROID)
     kotlin(Plugins.KAPT)
-    id(Plugins.NAVIGATION_SAFE_ARGS)
-    id(Plugins.DOKKA)
 }
 
 android {
@@ -24,7 +22,4 @@ android {
 
 dependencies {
     coreModuleDeps()
-
-    implementation(project(Modules.data))
-    implementation(project(Modules.domain))
 }

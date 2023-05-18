@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.arief.moviedb.BuildConfig
+import com.arief.moviedb.BuildConfigg
 import com.arief.moviedb.model.Movies
 import com.arief.moviedb.repository.api.ApiMovieDBRepo
 import com.arief.moviedb.core.utils.NetworkHelper

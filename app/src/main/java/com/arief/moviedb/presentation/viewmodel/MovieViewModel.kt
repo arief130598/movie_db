@@ -3,7 +3,7 @@ package com.arief.moviedb.presentation.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.arief.moviedb.BuildConfig
+//import com.arief.moviedb.BuildConfig
 import com.arief.moviedb.core.utils.NetworkHelper
 import com.arief.moviedb.data.repository.local.GenresRepoImpl
 import com.arief.moviedb.data.repository.local.MoviesRepoImpl

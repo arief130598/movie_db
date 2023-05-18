@@ -1,7 +1,7 @@
-package com.arief.moviedb.core.di
+package com.arief.moviedb.data.di
 
 import android.content.Context
-import com.arief.moviedb.core.db.MovieDatabase
+import com.arief.moviedb.data.datasource.local.MovieDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,5 +14,5 @@ class DatabaseModule {
 
     @Provides
     @Singleton
-    private fun provideDatabase(context: Context) = MovieDatabase.getInstance(context)
+    fun provideDatabase(context: Context) = MovieDatabase.getInstance(context)
 }

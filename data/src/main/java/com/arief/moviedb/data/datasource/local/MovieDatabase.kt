@@ -1,4 +1,4 @@
-package com.arief.moviedb.core.db
+package com.arief.moviedb.data.datasource.local
 
 import android.content.Context
 import androidx.room.Database
@@ -6,8 +6,6 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.arief.moviedb.core.utils.MovieDBConverters
-import com.arief.moviedb.data.datasource.local.GenresTable
-import com.arief.moviedb.data.datasource.local.MoviesTable
 import com.arief.moviedb.domain.model.Genres
 import com.arief.moviedb.domain.model.Movies
 
