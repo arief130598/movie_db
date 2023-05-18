@@ -10,6 +10,7 @@ object Plugins {
     const val DAGGER_HILT = "com.google.dagger.hilt.android"
     const val ANDROID_DYNAMIC_FEATURE = "com.android.dynamic-feature"
     const val NAVIGATION_SAFE_ARGS = "androidx.navigation.safeargs.kotlin"
+    const val KOTLIN_PARCELIZE = "kotlin-parcelize"
     const val DOKKA = "org.jetbrains.dokka"
     const val Detekt = "io.gitlab.arturbosch.detekt"
     const val KtLint = "org.jlleitschuh.gradle.ktlint"

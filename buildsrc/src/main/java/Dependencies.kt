@@ -87,10 +87,10 @@ object Deps {
         const val shimmer = "com.facebook.shimmer:shimmer:0.5.0"
     }
 
-    object Dagger {
+    object DaggerHilt {
         private const val version = "2.44"
         const val hiltAndroid = "com.google.dagger:hilt-android:$version"
-        const val hiltAndroidCompiler = "com.google.dagger:hilt-compiler:$version"
+        const val hiltAndroidCompiler = "com.google.dagger:hilt-android-compiler:$version"
     }
 
     object OkHttp {

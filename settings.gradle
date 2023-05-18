@@ -13,5 +13,11 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Movie DB"
-include(":app")
-include(":data")
+include ":app"
+include ':core'
+include ':domain'
+include ':data'
+include ':feature:home'
+include ':feature:search'
+include ':feature:detail'
+include ':feature:favorite'

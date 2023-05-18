@@ -1,12 +1,12 @@
-import extensions.appModuleDeps
+import extensions.coreModuleDeps
+import extensions.featureModuleDeps
 
 plugins {
-    id("com.android.application")
-    kotlin("android")
-    id("kotlin-kapt")
-    id("androidx.navigation.safeargs.kotlin")
-    id("kotlin-parcelize")
-    id("org.jetbrains.dokka")
+    id(Plugins.ANDROID_APPLICATION)
+    kotlin(Plugins.ANDROID)
+    kotlin(Plugins.KAPT)
+    id(Plugins.NAVIGATION_SAFE_ARGS)
+    id(Plugins.DOKKA)
 }
 
 android {
@@ -24,16 +24,18 @@ android {
 
         buildConfigField(BuildConfigType.string, BuildConfigName.api, BuildConfigValue.movie_api)
     }
-
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlin {
         jvmToolchain {
@@ -43,6 +45,9 @@ android {
     buildFeatures {
         dataBinding = true
     }
+    dynamicFeatures += setOf(
+        DynamicFeature.home, DynamicFeature.detail, DynamicFeature.search, DynamicFeature.favorite
+    )
 
     // Dokka Configuration
     tasks.dokkaHtml.configure {
@@ -60,5 +65,10 @@ android {
 }
 
 dependencies {
-    appModuleDeps()
+    coreModuleDeps()
+    featureModuleDeps()
+
+    implementation(project(Modules.core))
+    implementation(project(Modules.data))
+    implementation(project(Modules.domain))
 }

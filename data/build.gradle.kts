@@ -1,6 +1,11 @@
+import extensions.coreModuleDeps
+
 plugins {
-    id("com.android.application")
-    kotlin("android")
+    id(Plugins.ANDROID_APPLICATION)
+    kotlin(Plugins.ANDROID)
+    kotlin(Plugins.KAPT)
+    id(Plugins.NAVIGATION_SAFE_ARGS)
+    id(Plugins.DOKKA)
 }
 
 android {
@@ -11,16 +16,11 @@ android {
         minSdk = AndroidConfig.MIN_SDK
         targetSdk = AndroidConfig.TARGET_SDK
     }
-
-    buildFeatures {
-        dataBinding = true
-    }
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.appcompat:appcompat:1.5.1")
-    implementation("com.google.android.material:material:1.6.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
+    coreModuleDeps()
+
+    implementation(project(Modules.core))
+    implementation(project(Modules.domain))
 }

@@ -8,8 +8,8 @@ import com.arief.moviedb.model.Movies
 import com.arief.moviedb.model.MoviesResponse
 import com.arief.moviedb.repository.api.ApiMovieDBRepo
 import com.arief.moviedb.ui.search.SearchViewModel
-import com.arief.moviedb.utils.NetworkHelper
-import com.arief.moviedb.utils.Resource
+import com.arief.moviedb.core.utils.NetworkHelper
+import com.arief.moviedb.core.utils.Resource
 import com.nhaarman.mockitokotlin2.atLeastOnce
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify

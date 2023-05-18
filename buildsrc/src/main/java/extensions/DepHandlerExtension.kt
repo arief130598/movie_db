@@ -30,6 +30,11 @@ fun DependencyHandler.glide() {
     implementation(Deps.Glide.compiler)
 }
 
+fun DependencyHandler.hilt() {
+    implementation(Deps.DaggerHilt.hiltAndroid)
+    kapt(Deps.DaggerHilt.hiltAndroidCompiler)
+}
+
 fun DependencyHandler.koin() {
     implementation(Deps.Koin.koin_core)
     implementation(Deps.Koin.koin_android)

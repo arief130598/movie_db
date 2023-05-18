@@ -11,7 +11,7 @@ import com.arief.moviedb.repository.api.ApiMovieDBRepo
 import com.arief.moviedb.repository.db.GenresRepo
 import com.arief.moviedb.repository.db.MoviesRepo
 import com.arief.moviedb.ui.movie.MovieViewModel
-import com.arief.moviedb.utils.NetworkHelper
+import com.arief.moviedb.core.utils.NetworkHelper
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever

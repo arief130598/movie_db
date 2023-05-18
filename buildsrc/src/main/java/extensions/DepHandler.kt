@@ -5,8 +5,14 @@ import Modules
 import TestDeps
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
-fun DependencyHandler.appModuleDeps() {
+fun DependencyHandler.coreModuleDeps() {
     implementation(Deps.AndroidX.coreKtx)
+    hilt()
+    network()
+    room()
+}
+
+fun DependencyHandler.featureModuleDeps() {
     implementation(Deps.AndroidX.appcompat)
     implementation(Deps.AndroidX.legacy)
     implementation(Deps.AndroidX.Constraint.constraintLayout)
@@ -15,8 +21,5 @@ fun DependencyHandler.appModuleDeps() {
     glide()
     lifecycle()
     navigation()
-    room()
-    koin()
-    network()
     testing()
 }

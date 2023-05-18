@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.arief.moviedb.data", appContext.packageName)
+        assertEquals("com.arief.moviedb.data.test", appContext.packageName)
     }
 }

@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Movie DB</string>
+    <string name="background_image_url">https://image.tmdb.org/t/p/w780</string>
+    <string name="image_url">https://image.tmdb.org/t/p/w185</string>
+    <string name="favorite">Favorite</string>
+    <string name="popular">Popular</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="search">Search</string>
+    <string name="release">Release :</string>
+    <string name="release_date">Release Date :</string>
+    <string name="popularity">Popularity :</string>
+    <string name="rating">Rating :</string>
+    <string name="rating_total">Rating Total :</string>
+    <string name="language">Language :</string>
+    <string name="back">Back</string>
+    <string name="poster">Poster</string>
+    <string name="background_poster">Background Poster</string>
+    <string name="title_home">Home</string>
+    <string name="title_search">Search</string>
+    <string name="title_detail">Detail</string>
+    <string name="title_favorite">Favorite</string>
+</resources>

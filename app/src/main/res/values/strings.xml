@@ -16,4 +16,9 @@
     <string name="back">Back</string>
     <string name="poster">Poster</string>
     <string name="background_poster">Background Poster</string>
+    <string name="title_home">Home</string>
+    <string name="title_search">Search</string>
+    <string name="title_detail">Detail</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_test">Test</string>
 </resources>
